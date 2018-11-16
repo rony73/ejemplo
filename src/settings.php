@@ -17,10 +17,11 @@ return [
         ],
          // Database connection settings           
           "db" => [
-            "host" => "localhost",
-            "dbname" => "base_agenda",
-            "user" => "root",
-            "pass" => ""
+            "host" => "ec2-184-73-169-151.compute-1.amazonaws.com",
+            "dbname" => "d8pf6at6nh6aul",
+            "user" => "nkxcztlawlguxz",
+            "pass" => "28c202d53f6f4858eaec6782dd9704c8e8c4d3b66b530f2cbc589c620b38dcb1",
+            "port" => 5432
         ],
     ],
 ];

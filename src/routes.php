@@ -43,7 +43,7 @@
     $app->post('/empleados', function ($request, $response) {
         
         $legajo=$request->getParam('legajo');
-        if($legajo > 1500 || $legajo<0 ) {
+        if($legajo > 1500 && $legajo<0 ) {
             return $this->response->withJson($response, 400); 
         }
         $nombre=$request->getParam('nombre');

@@ -1,12 +1,4 @@
 <?php
-
-// get all todos
-    $app->get('/empleados', function ($request, $response,$arg) {
-         $sth = $this->db->prepare("SELECT * FROM tablaprueba");
-        $sth->execute();
-        $todos = $sth->fetchAll();
-        return $this->response->withJson($todos);
-    });
  
     // Retrieve todo with id 
     $app->get('/empleados/[{legajo}]', function ($request, $response, $args) {
@@ -30,13 +22,22 @@
  
  
     // Search for todo with given search teram in their name
-    $app->get('/empleados/buscar/[{query}]', function ($request, $response, $args) {
-         $sth = $this->db->prepare("SELECT * FROM tablaprueba WHERE UPPER(tablaprueba) LIKE :query ORDER BY tablaprueba");
-        $query = "%".$args['query']."%";
-        $sth->bindParam("query", $query);
+    $app->get('/empleados/[{nombre}]', function ($request, $response, $args) {
+         $sth = $this->db->prepare("SELECT * FROM tablaprueba 
+         WHERE UPPER(tablaprueba) LIKE  :nombre ORDER BY  tablaprueba");
+         
+        $nombre = "%".$args['nombre']."%";
+        $sth->bindParam("nombre", $nombre);
         $sth->execute();
         $todos = $sth->fetchAll();
-        return $this->response-> withJson($todos);
+        if($nombre)
+            return $this->response->withJson($todos, 200);
+        else{
+            $response = [];
+            $response["message"] = "no encontre el nombre: ".$args['nombre'];
+            return $this->response->withJson($response, 204);
+        }
+       // return $this->response-> withJson($todos);
     });
  
     // Add a new todo

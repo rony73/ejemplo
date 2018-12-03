@@ -1,5 +1,17 @@
 <?php
  
+ 
+ // get all todos
+   $app->get('/empleados', function ($request, $response, $args) {
+    $sth = $this->db->prepare("SELECT * FROM tablaprueba");
+   $sth->execute();
+   $todos = $sth->fetchAll();
+   return $this->response->withJson($todos);
+});
+
+
+
+
     // Retrieve todo with id 
     $app->get('/empleados/[{legajo}]', function ($request, $response, $args) {
         if($arg ['legajo']>1500 || ['legajo']<0){

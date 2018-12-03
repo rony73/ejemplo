@@ -26,7 +26,7 @@
          
        
         $sth = $this->db->prepare("SELECT * FROM tablaprueba 
-         WHERE nombre LIKE  $nombre ORDER BY  tablaprueba");
+         WHERE nombre LIKE  $nombre");
 
         $nombre = "%".$args['nombre']."%";
          

@@ -22,7 +22,7 @@
  
  
     // Search for todo with given search teram in their name
-    $app->get('/empleados/[{nombre}]', function ($request, $response, $args) {
+    /*$app->get('/empleados/[{nombre}]', function ($request, $response, $args) {
          
        
         $sth = $this->db->prepare("SELECT * FROM tablaprueba 
@@ -41,7 +41,7 @@
             return $this->response->withJson($response, 204);
         }
        // return $this->response-> withJson($todos);
-    });
+    });*/
  
     // Add a new todo
     $app->post('/empleados', function ($request, $response) {

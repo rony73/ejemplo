@@ -23,10 +23,13 @@
  
     // Search for todo with given search teram in their name
     $app->get('/empleados/[{nombre}]', function ($request, $response, $args) {
-         $sth = $this->db->prepare("SELECT * FROM tablaprueba 
-         WHERE UPPER(tablaprueba) LIKE  :nombre ORDER BY  tablaprueba");
          
+       
+        $sth = $this->db->prepare("SELECT * FROM tablaprueba 
+         WHERE nombre LIKE  $nombre ORDER BY  tablaprueba");
+
         $nombre = "%".$args['nombre']."%";
+         
         $sth->bindParam("nombre", $nombre);
         $sth->execute();
         $todos = $sth->fetchAll();
